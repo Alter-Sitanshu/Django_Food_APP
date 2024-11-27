@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/home.css' %}">
+
+</head>
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-5 ps-3">
+        <a class="navbar-brand" href="#">Food App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'landing:index' %}">Home</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navBarDropdown" role="button" 
+                    data-bs-toggle="dropdown" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-light" href="#">Action</a></li>
+                        <li><a class="dropdown-item text-light" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider text-light"></li>
+                        <li><a class="dropdown-item text-light" href="#">Something else here</a></li>
+                    </ul>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'landing:item_create' %}">Add Item</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="loginDrop" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">User</a>
+                        <ul class="dropdown-menu bg-dark" aria-labelledby="loginDrop">
+                            <li><a class="dropdown-item text-light" href="{% url 'login' %}">Sign In</a></li>
+                            <li><a class="dropdown-item text-light" href="{% url 'register' %}">Sign Up</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        {% block content %}
+            {% for food in all_foods %}
+                <a href="{% url 'landing:detail' food.id %}" class="text-muted">
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 img-container">
+                            <img src="{{ food.item_img }}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8 card-right">
+                            <div class="card-body bg-dark rounded-3 text-light">
+                                <h5 class="card-title">{{ food.item_name }}</h5>
+                                <p class="card-text">Added by :- {{ food.item_author|title }}</p>
+                                <p class="card-text">{{ food.item_desc }}</p>
+                                <h5 class="card-title">&#8377;{{ food.item_price }}</h5>
+                                <p class="card-text"><small class="text-light">Last updated on {{ food.uploaded_on|date:"j M Y" }}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div></a>
+            {% endfor %}
+        {% endblock %}
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

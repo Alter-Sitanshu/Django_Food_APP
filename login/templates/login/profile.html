@@ -1,0 +1,22 @@
+{% extends 'landing/home.html' %}
+
+{% block content %}
+    <h1 class="text-center text-light">Profile Page</h1>
+    <div class="col-6 mx-auto p-3 shadow-lg text-center text-light">
+        <div class="card-body">
+            <p>Hello user</p>
+            <div  class="rounded-circle mx-auto" style="
+                overflow: hidden;
+                height: 18rem;
+                width: 19rem;
+            ">
+                <img src="{{ user.profile.image.url }}" alt="" style="
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                ">
+            </div>
+        </div>
+        <h2 class="card-title mt-4">{{ user.username|title }}</h2>
+    </div>
+{% endblock %}

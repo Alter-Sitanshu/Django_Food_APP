@@ -1,0 +1,31 @@
+{% extends 'landing/home.html' %}
+{% block content %}
+    <h1 class="text-warning text-center">Item details</h1>
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-md-6" style="
+                    overflow: hidden;
+                    height: 280px;
+                ">
+                <img src="{{ item.item_img }}" class="card-img" alt="..." style="
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%; 
+                ">
+            </div>
+            <div class="col-md-6 card-right">
+                <div class="card-body bg-dark rounded-3 text-light">
+                    <h5 class="card-title">{{ item.item_name }}</h5>
+                    <p class="card-text">{{ item.item_desc }}</p>
+                    <h5 class="card-title">&#8377;{{ item.item_price }}</h5>
+                    <p class="card-text"><small class="text-light">Last updated on {{ item.uploaded_on|date:"j M Y" }}</small></p>
+                    <div class="row mt-5">
+                        <a class="text-muted col-md-2" href="{% url 'landing:item_edit' item.id %}"><button class="btn btn-outline-success btn-lg">Edit</button></a>
+                        <a class="text-muted col-md-2" href="{% url 'landing:delete' item.id %}"><button class="btn btn-outline-danger btn-lg">Delete</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

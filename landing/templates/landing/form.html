@@ -1,0 +1,10 @@
+{% extends 'landing/home.html' %}
+
+{% block content %}
+    <h1 class="text-secondary text-center">Form View</h1>
+    <form action="", method="POST" class="text-light col-6 mx-auto p-3 shadow-lg">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-success btn-lg">Save</button>
+    </form>
+{% endblock %}

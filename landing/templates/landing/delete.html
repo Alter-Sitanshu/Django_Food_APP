@@ -1,0 +1,21 @@
+{% extends 'landing/home.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="card bg-dark text-light">
+            <div class="card-header text-center">
+                <h5>Confirm</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-center">
+                    Are you sure to Delete the item ({{ name }}) ?
+                </p>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-danger me-2" type="submit">Delete</button>
+                    <a class="text-muted btn btn-secondary text-light" href="{% url 'landing:index' %}">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

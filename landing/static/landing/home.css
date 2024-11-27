@@ -1,0 +1,46 @@
+.dropdown-item:hover{
+    background-color: #343a40;
+}
+.navbar{
+    background-color: black;
+}
+.img-container {
+    overflow: hidden; /* Clip content outside the container */
+    height: 200px; /* Set a fixed height */
+    margin-right: 0.3rem;
+}
+
+.img-container img {
+    object-fit: cover; /* Ensures the image covers the container */
+    height: 100%; /* Fill the container */
+}
+.card {
+    box-shadow: 0 4px 10px rgba(236, 253, 1, 0.3);
+    border-radius: 10px;
+    background-color: yellow;
+    margin-bottom: 2rem;
+}
+.row {
+    display: flex;
+    padding-right: 0.1rem;
+}
+
+.card-right {
+    padding-left: 0;
+    padding-right: 0.8rem;
+    flex-grow: 1; /* Ensures the body grows to fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Optional: adjusts content within the card body */
+}
+
+
+.profile {
+    overflow: hidden; /* Clip content outside the container */
+    height: 200px; /* Set a fixed height */
+}
+.profile img {
+    object-fit: cover; /* Ensures the image covers the container */
+    height: 100%; /* Fill the container */
+    width: 100%; /* Fill the container */
+}
