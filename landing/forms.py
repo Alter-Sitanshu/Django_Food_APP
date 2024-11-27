@@ -1,6 +1,7 @@
 from django import forms
 from .models import Item
 
+# Form using the ModelForms class
 class AddItem(forms.ModelForm):
     class Meta:
         model = Item
@@ -26,6 +27,7 @@ class AddItem(forms.ModelForm):
             }),
         }
 
+#Custom Form making 
 class SimpleForm(forms.Form):
     name = forms.CharField(
         max_length=100,

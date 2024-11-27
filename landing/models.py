@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+# Item model to stor the details of the item and created by user
 class Item(models.Model):
     item_name = models.CharField(max_length=120)
     item_desc = models.TextField(max_length=200)
